@@ -11,7 +11,7 @@ import (
 )
 
 func RootHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "../index.html")
+
 	// indexFile, err := os.Open("../index.html")
 
 	// if err != nil {
@@ -28,9 +28,9 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 	// 	return
 	// }
 
-	// w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	// w.WriteHeader(http.StatusOK)
-	// w.Write(content)
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+	http.ServeFile(w, r, "../index.html")
 }
 
 func UploaderHandler(w http.ResponseWriter, r *http.Request) {
