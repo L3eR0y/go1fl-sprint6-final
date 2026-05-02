@@ -69,7 +69,7 @@ func UploaderHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		defer dst.Close()
 
-		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte(resultString))
 
