@@ -11,25 +11,26 @@ import (
 )
 
 func RootHandler(w http.ResponseWriter, r *http.Request) {
-	indexFile, err := os.Open("../index.html")
-
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	defer indexFile.Close()
-
-	content, _ := io.ReadAll(indexFile)
+	http.ServeFile(w, r, "../index.html")
+	// indexFile, err := os.Open("../index.html")
 
 	// if err != nil {
 	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
 	// 	return
 	// }
 
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	w.WriteHeader(http.StatusOK)
-	w.Write(content)
+	// defer indexFile.Close()
+
+	// content, err := io.ReadAll(indexFile)
+
+	// if err != nil {
+	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
+	// 	return
+	// }
+
+	// w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	// w.WriteHeader(http.StatusOK)
+	// w.Write(content)
 }
 
 func UploaderHandler(w http.ResponseWriter, r *http.Request) {
